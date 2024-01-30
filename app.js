@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 // database URI
 const db = require("./config/keys").mongoURI;
@@ -14,6 +15,13 @@ const games = require("./routes/api/games");
 // models
 const User = require("./models/User");
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
+
 mongoose
     .connect(db, {useNewUrlParser: true})
     .then(() => console.log("connected to mongoDB"))
@@ -23,21 +31,27 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}) )
 
-app.get("/", (req, res) => {
-    const user = new User({
-        handle: "test",
-        email: "testing@gmail.com",
-        password: "password"
-    })
-    user.save()
-    res.send("Hello Everyone!!");
-});
+// app.get("/", (req, res) => {
+//     const user = new User({
+//         handle: "test",
+//         email: "testing@gmail.com",
+//         password: "password"
+//     })
+//     user.save()
+//     res.send("Hello Everyone!!");
+// });
 
 app.use("/api/users", users)
-app.use("/api/games", games)
+// app.use("/api/games", games)
 
+app.get("/", (req, res) => res.send("Hello World!!"));
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 const port = process.env.PORT || 5000;
 
