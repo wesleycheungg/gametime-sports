@@ -14,6 +14,21 @@ const validateLoginInput = require('../../validation/login');
 //     res.json({msg: "This is the user route"});
 // });
 
+// fetch individual user
+router.get('/show/:userId', (req, res) => {
+  if (req.params.userId === 'undefined'){
+    return res.status(422).json({"msg": "userId is undefined"})
+  }
+  User.findById(req.params.userId)
+  .then( user => {
+    if (!!user){
+      return res.json(user)
+    } else {
+      return res.status(404).json({"msg": "User not found"})
+    }
+  })
+}) 
+
 // sign up
 router.post('/register', (req,res) => {
     const { errors, isValid } = validateRegisterInput(req.body)
