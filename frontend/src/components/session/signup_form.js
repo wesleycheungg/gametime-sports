@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-// import NavbarContainer from '../nav/navbar_container'
+import NavbarContainer from '../navbar/navbar_container'
 import { Link } from 'react-router-dom'
 
 
@@ -60,7 +60,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="sigup-page">
-        {/* <NavbarContainer /> */}
+        <NavbarContainer />
         <div className="signup-form-container">
           <form className="form-container-signup" onSubmit={this.handleSubmit}>
             <div className="form-container-signup-2">
