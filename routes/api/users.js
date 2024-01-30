@@ -9,9 +9,10 @@ const jwt = require("jsonwebtoken");
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-router.get("/test", (req,res) => {
-    res.json({msg: "This is the user route"});
-});
+// testing
+// router.get("/test", (req,res) => {
+//     res.json({msg: "This is the user route"});
+// });
 
 // sign up
 router.post('/register', (req,res) => {
