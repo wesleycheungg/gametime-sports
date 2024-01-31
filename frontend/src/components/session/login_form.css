@@ -1,6 +1,6 @@
 .form-container {
     margin-top: 200px;
-    font-family: 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Glacial Indifference', sans-serif;
     display: flex;
     justify-content: center;
     height: 100%;
@@ -34,8 +34,8 @@
 }
 
 .submit-btn {
-    background-color: #53d337;
-    border: 1px solid #53d337;
+    background-color: #0df2a0;
+    border: 1px solid #0df2a0;
     border-radius: 4px;
     text-align: center;
     font-size: 23px;
@@ -63,11 +63,12 @@
 }
 
 .login-page-signup-btn {
-    font-family: 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Glacial Indifference', sans-serif;
     margin-left: 10px;
     margin-top: 15px;
     padding: 8px 15px 8px 15px;
-    border: 1px solid #000000;
+    background-color: #0df2a0;
+    border: 1px solid #0df2a0;
     border-radius: 3px;
 }
 

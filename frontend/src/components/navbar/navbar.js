@@ -29,7 +29,7 @@ class NavBar extends React.Component {
   }
   
   handleClick() {
-    const demoUser = {handle: "Demo User", email: "demo@gmail.com", password: "password"}
+    const demoUser = {handle: "demoUser", email: "demo@gmail.com", password: "password"}
     this.props.login(demoUser)
   }
 

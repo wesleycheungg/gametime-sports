@@ -2,11 +2,10 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch, Route } from 'react-router-dom';
 
-// components
-// import MainPageContainer from './main/main_page_container';
-
+// Components
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container'; 
+import HomeContainer from './home/home_container';
 // import SplashForm from './splash/splash_form';
 // import ProfileContainer from './profile/profile_container';
 // import ShowGameContainer from './games/show_game_container';
@@ -37,9 +36,9 @@ const App = () => (
     <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        {/* <ProtectedRoute exact path="/game/show/:id" component={ShowGameContainer} />
-        <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-        <ProtectedRoute exact path="/main" component={MainPageContainer} /> */}
+        {/* <ProtectedRoute exact path="/game/show/:id" component={ShowGameContainer} /> */}
+        {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
+        <ProtectedRoute exact path="/main" component={HomeContainer} />
         {/* <Route path="/" component={SplashForm} /> */}
         
         
