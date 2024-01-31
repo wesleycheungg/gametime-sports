@@ -11,7 +11,7 @@ class SignupForm extends React.Component {
       email: '',
       handle: '',
       password: '',
-    //   password2: '',
+      password2: '',
       errors: {}
     };
 
@@ -39,7 +39,7 @@ class SignupForm extends React.Component {
       email: this.state.email,
       handle: this.state.handle,
       password: this.state.password,
-    //   password2: this.state.password2
+      password2: this.state.password2
     };
 
     this.props.signup(user, this.props.history); 
@@ -86,13 +86,13 @@ class SignupForm extends React.Component {
                   onChange={this.update('password')}
                 />
               <br/>
-              {/* <div>Confirm Password</div>
+              <div>Confirm Password</div>
                 <input type="password"
                   className="signup-form-fields"
                   value={this.state.password2}
                   onChange={this.update('password2')}
                 />
-              <br/> */}
+              <br/>
               {this.renderErrors()}
               <input className="submit-btn" type="submit" value="Sign Up" />
               <div className="signup-container-message">
@@ -100,11 +100,11 @@ class SignupForm extends React.Component {
                 <Link className="signup-page-login-btn" to={'/login'}>Log In</Link>
               </div>
               <div className="line"></div>
-              <div className="warning-text">
+              {/* <div className="warning-text">
                 If you or someone you know has a gambling problem, 
                 crisis counseling and referral services can be 
                 accessed by calling 1-800-GAMBLER (1-800-426-2537).
-              </div>
+              </div> */}
             </div>
           </form>
         </div>

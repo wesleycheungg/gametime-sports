@@ -93,11 +93,11 @@ class LoginForm extends React.Component {
                 <Link className="login-page-signup-btn" to={'/signup'}>Sign Up</Link>
               </div>
               <div className="line"></div>
-              <div className="warning-text">
+              {/* <div className="warning-text">
                 If you or someone you know has a gambling problem, 
                 crisis counseling and referral services can be 
                 accessed by calling 1-800-GAMBLER (1-800-426-2537).
-              </div>
+              </div> */}
             </div>
           </form>
         </div>
