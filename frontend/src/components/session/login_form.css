@@ -36,9 +36,10 @@
 .submit-btn {
     background-color: #0df2a0;
     border: 1px solid #0df2a0;
+    color: white;
     border-radius: 4px;
     text-align: center;
-    font-size: 23px;
+    font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
     padding-top: 7px;
@@ -54,7 +55,7 @@
 .login-container-message {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .login-message {
@@ -67,9 +68,11 @@
     margin-left: 10px;
     margin-top: 15px;
     padding: 8px 15px 8px 15px;
-    background-color: #0df2a0;
-    border: 1px solid #0df2a0;
+    background-color: #889AAA;
+    border: 1px solid #889AAA;
     border-radius: 3px;
+    color: white;
+    text-decoration: none;
 }
 
 .warning-text {

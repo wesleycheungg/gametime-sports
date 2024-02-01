@@ -20,11 +20,11 @@ class Home extends React.Component {
   }
 
   render() {
-    var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-      var yyyy = today.getFullYear();
-      today = mm.slice(1) + '/' + dd + '/' + yyyy;
+    // var today = new Date();
+    //   var dd = String(today.getDate()).padStart(2, '0');
+    //   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    //   var yyyy = today.getFullYear();
+    //   today = mm.slice(1) + '/' + dd + '/' + yyyy;
     return (
       <div className="main">
         <div className="main-nav">
@@ -42,7 +42,7 @@ class Home extends React.Component {
           <div className="main-header-date">{today}</div> */}
           {/* <button onClick={() => this.setState({modalOpen: true})} className="make-bet">Make Bet</button> */}
           {/* <GameIndexContainer /> */}
-          <div className="footer-container">
+          {/* <div className="footer-container">
             <div class="dropup">
               <button class="dropbtn">LinkedIn</button>
               <div class="dropup-content">
@@ -57,11 +57,11 @@ class Home extends React.Component {
                 <a href="https://github.com/rytmercado/nba-bets" target="_blank">GitHub Project</a>
               </div>
             </div>
-          </div>
+          </div> */}
           
-          <footer className="main-footer">
+          {/* <footer className="main-footer">
             Copyright &copy; 2024 GameTime Sports
-          </footer>
+          </footer> */}
         </div>
         {/* <BetModalContainer onClose={() => this.setState({modalOpen: false})} modalOpen={this.state.modalOpen} /> */}
       </div>

@@ -88,11 +88,11 @@ class LoginForm extends React.Component {
               <br/>
               {this.renderErrors()}
               <input className="submit-btn" type="submit" value="Log In" />
+              <div className="line"></div>
               <div className="login-container-message">
                 <div className="login-message">Don't have an account?</div>
                 <Link className="login-page-signup-btn" to={'/signup'}>Sign Up</Link>
               </div>
-              <div className="line"></div>
               {/* <div className="warning-text">
                 If you or someone you know has a gambling problem, 
                 crisis counseling and referral services can be 
