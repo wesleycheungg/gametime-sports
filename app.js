@@ -15,6 +15,10 @@ const games = require("./routes/api/games");
 // models
 const User = require("./models/User");
 
+// NBA games API
+const getGameResultsFromNBAapi = require("./utils/getGamesNBAapi")
+
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
   app.get("/", (req, res) => {
@@ -45,3 +49,4 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => {console.log(`listening on port ${port}`)});
 
+// getGameResultsFromNBAapi();

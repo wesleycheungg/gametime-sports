@@ -46,8 +46,7 @@ const GameSchema = new Schema({
   away_score: {
     type: Number, 
     required: true 
-  },
-  timestamps: true 
+  }
 }) 
 
 const Game = mongoose.model("games", GameSchema)
