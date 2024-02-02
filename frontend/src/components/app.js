@@ -13,8 +13,8 @@ import HomeContainer from './home/home_container';
 // import './reset.css'
 // import './splash/splash.css'
 // import './nav/navbar.css'
-import './session/login_form.css'
-import './session/signup_form.css'
+import './session/login_form.css';
+import './session/signup_form.css';
 // import '../components/games/game_index_item.css'
 // import './bet_modal/bet_modal.css'
 // import './profile/profile.css'
@@ -22,7 +22,7 @@ import './session/signup_form.css'
 // import './games/show_game.css'
 // import './comments/comments.css'
 // import './toast/toast.css'
-// import './main/main.css'
+// import './home/home.css'
 // import './scroll_bar/scroll_bar.css'
 
 // import './games/games_list.css'
@@ -38,7 +38,7 @@ const App = () => (
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         {/* <ProtectedRoute exact path="/game/show/:id" component={ShowGameContainer} /> */}
         {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
-        <ProtectedRoute exact path="/main" component={HomeContainer} />
+        <ProtectedRoute exact path="/home" component={HomeContainer} />
         {/* <Route path="/" component={SplashForm} /> */}
         
         

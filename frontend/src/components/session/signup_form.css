@@ -1,5 +1,5 @@
 .signup-form-container {
-    margin-top: 200px;
+    margin-top: 100px;
     font-family: 'Lucida Sans', Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -47,8 +47,11 @@
     margin-left: 10px;
     margin-top: 15px;
     padding: 8px 15px 8px 15px;
-    border: 1px solid #000000;
+    background-color: #889AAA;
+    border: 1px solid #889AAA;
     border-radius: 3px;
+    color: white;
+    text-decoration: none;
 }
 
 /* .signup-page-login-btn:hover {
