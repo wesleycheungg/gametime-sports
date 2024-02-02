@@ -8,8 +8,8 @@ const getGameResultsFromNBAapi = () => {
     url: 'https://api-nba-v1.p.rapidapi.com/games',
     params: {date: '2024-02-02'},
     headers: {
-      'X-RapidAPI-Key': '78172c2bfbmsh62b4f443fbc5b3bp1febf0jsn70d994421a30',
-      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+      'X-RapidAPI-Key': rapidAPI_key,
+      'X-RapidAPI-Host': rapidApi_host
     }
   };
 
