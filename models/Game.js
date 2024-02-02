@@ -1,28 +1,7 @@
-const { isInteger } = require("lodash");
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 var ObjectId = require('mongodb').ObjectID;
 
-// const CommentSchema = new Schema({
-//   body: {
-//     type: String,
-//     required: false
-//   }, 
-//   user: {
-//     type: ObjectId, 
-//     required: true 
-//   },
-//   handle: {
-//     type: String,
-//     required: true 
-//   }, 
-//   parent: {
-//     type: ObjectId, 
-//   }
-// }, 
-// {
-//   timestamps: true 
-// })
 
 const GameSchema = new Schema({
   start_time: {
@@ -37,19 +16,19 @@ const GameSchema = new Schema({
     type: String,
     required: true
   },
-  home_odds: {
-    type: Number, 
-    required: true 
-  },
-  away_odds: {
-    type: Number,
-    required: true
-  },
+  // home_odds: {
+  //   type: Number, 
+  //   required: true 
+  // },
+  // away_odds: {
+  //   type: Number,
+  //   required: true
+  // },
   status: {
     type: String,
     required: true
   },
-  game_time: {
+  game_start_time: {
     type: String,
     required: true
   },
@@ -68,10 +47,7 @@ const GameSchema = new Schema({
     type: Number, 
     required: true 
   },
-//   comments: [CommentSchema]
-//   },
-//   {
-    timestamps: true 
+  timestamps: true 
 }) 
 
 const Game = mongoose.model("games", GameSchema)
