@@ -33,18 +33,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json()); 
 
-// app.get("/", (req, res) => {
-//     const user = new User({
-//         handle: "test",
-//         email: "testing@gmail.com",
-//         password: "password"
-//     })
-//     user.save()
-//     res.send("Hello Everyone!!");
-// });
-
 app.use("/api/users", users)
-// app.use("/api/games", games)
+app.use("/api/games", games)
 
 app.get("/", (req, res) => res.send("Hello World!!"));
 
