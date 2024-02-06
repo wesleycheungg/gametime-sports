@@ -6,18 +6,20 @@ const GameSchema = new Schema({
   game_id: {
     type: Number
   },
+  start_time: {
+    type: Date
+  },
   status: {
     type: Object
   },
-  start_time: {
-    type: Date
+  season: {
+    type: Number
   },
   home_team: {
     type: Object
   },
   away_team: {
     type: Object,
-    // required: true
   },
   home_score: {
     type: Object
@@ -25,6 +27,12 @@ const GameSchema = new Schema({
   away_score: {
     type: Object
   },
+  quarter: {
+    type: Object
+  },
+  arena: {
+    type: Object
+  }
   // home_odds: {
   //   type: Number, 
   //   required: true 

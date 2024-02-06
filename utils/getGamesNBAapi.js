@@ -18,7 +18,6 @@ const getTomorrowsDate = () => {
 
 const getGameResultsFromNBAapi = () => {
   const dateForTodaysGames = getTomorrowsDate()
-
   const options = {
     method: 'GET',
     url: 'https://api-nba-v1.p.rapidapi.com/games',
@@ -37,20 +36,26 @@ const getGameResultsFromNBAapi = () => {
       let gameObj = {};
 
       let result = data[i].status;
+      let season = data[i].season;
       let gameId = data[i].id;
       let startTime = data[i].date.start;
       let homeTeam = data[i].teams.home;
       let awayTeam = data[i].teams.visitors;
       let homeScore = data[i].scores.home;
       let awayScore = data[i].scores.visitors;
+      let quarter = data[i].periods;
+      let arena = data[i].arena;
 
       gameObj.game_id = gameId;
       gameObj.status = result;
+      gameObj.season = season;
       gameObj.start_time = startTime;
       gameObj.home_team = homeTeam;
       gameObj.away_team = awayTeam;
       gameObj.home_score = homeScore;
       gameObj.away_score = awayScore;
+      gameObj.arena = arena;
+      gameObj.quarter = quarter;
 
       console.log('GAMEOBJECT ' + gameObj)
 
