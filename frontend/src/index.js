@@ -5,7 +5,7 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
-// import { getGames } from './actions/game_actions';
+import { getGames } from './actions/game_actions';
 // import { postBet } from './actions/bet_actions';
 // import { getBets } from './util/bet_api_util';
 import {fetchUser} from './util/session_api_util'
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.getBets = getBets;
   window.store = store;
   window.fetchUser = fetchUser;
-  // window.getGame = getGame;
+  window.getGames = getGames;
 
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -10,9 +10,22 @@ const isToday = (someDate) => {
   return (someDate.getDate() == today.getDate() && someDate.getMonth() == today.getMonth() && someDate.getFullYear() == today.getFullYear());
 }
 
+const getYesterdaysDate = () => {
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+
+  const year = yesterday.getFullYear();
+  const month = String(yesterday.getMonth() + 1).padStart(2, '0');
+  const day = String(yesterday.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
+
 router.get('/index', (req, res) => {
   Game.find().then(games => {
-    const todaysGames = games.filter(game => isToday(game.start_time));
+    const todaysGames = games.filter(game => true);
     return res.json(todaysGames)
   })
 })

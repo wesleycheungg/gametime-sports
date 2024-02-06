@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavBarContainer from '../navbar/navbar_container';
-// import GameIndexContainer from '../games/game_index_container';
+import GameCardsContainer from '../gameCard/gameCards_container';
 // import BetModalContainer from '../bet_modal/bet_modal_container';
 // import ScrollBarContainer from '../scroll_bar/scroll_bar_container';
 // import Toast from '../toast/toast';
@@ -40,7 +40,7 @@ class Home extends React.Component {
           {/* <h1 className="main-header">Today's Games</h1>
           <div className="main-header-date">{today}</div> */}
           {/* <button onClick={() => this.setState({modalOpen: true})} className="make-bet">Make Bet</button> */}
-          {/* <GameIndexContainer /> */}
+          <GameCardsContainer />
           {/* <div className="footer-container">
             <div class="dropup">
               <button class="dropbtn">LinkedIn</button>
