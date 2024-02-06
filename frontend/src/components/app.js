@@ -15,7 +15,7 @@ import HomeContainer from './home/home_container';
 // import './nav/navbar.css'
 import './session/login_form.css';
 import './session/signup_form.css';
-// import '../components/games/game_index_item.css'
+import '../components/gameCard/gameCard.css';
 // import './bet_modal/bet_modal.css'
 // import './profile/profile.css'
 // import './games/game_index_item.css'

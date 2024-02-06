@@ -65,7 +65,7 @@ class GameCard extends React.Component {
                         <div className="game-header">
                             {/* <button className="game-alert-bt" onClick={() => this.setState({helpModalOpen: true})}>Help</button> */}
                             <div className="nba-game-logo">
-                                <img src={nba_logo}></img>
+                                <img src={nba_logo} className="img-nba"></img>
                                 National Basketball League
                             </div>
                             {/* <Link to={`/game/show/${game._id}`}><button className="game-log-btn">View Game Log</button></Link> */}

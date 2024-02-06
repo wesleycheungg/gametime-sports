@@ -27,6 +27,11 @@ img {
     display: block;
 }
 
+img-nba {
+    width: 10px;
+    height: 10px;
+}
+
 strong {
     font-weight: 600;
 }
