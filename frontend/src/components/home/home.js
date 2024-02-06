@@ -37,7 +37,6 @@ class Home extends React.Component {
 
 
         <div className="all-games">
-            <div>hello world</div>
           {/* <h1 className="main-header">Today's Games</h1>
           <div className="main-header-date">{today}</div> */}
           {/* <button onClick={() => this.setState({modalOpen: true})} className="make-bet">Make Bet</button> */}
