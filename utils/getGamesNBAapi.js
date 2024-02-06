@@ -2,10 +2,12 @@ var axios = require('axios');
 const rapidAPI_key = require('../config/keys').rapidAPI_key;
 const rapidAPI_host = require('../config/keys').rapidApi_host;
 
+// model
+const Game = require('../models/Game');
+
 // need to get tomorrows date because api gets todays actual games with tomorrows date as param
 const getTomorrowsDate = () => {
   const today = new Date();
-  // console.log(today)
   today.setDate(today.getDate() + 1); // get tomorrows date
 
   const year = today.getFullYear();
@@ -29,7 +31,39 @@ const getGameResultsFromNBAapi = () => {
 
   axios(options)
   .then(function (response) {
-    console.log(JSON.stringify(response.data));
+    let data = response.data.response
+
+    for(let i = 0; i < data.length; i++) {
+      let gameObj = {};
+
+      let result = data[i].status;
+      let gameId = data[i].id;
+      let startTime = data[i].date.start;
+      let homeTeam = data[i].teams.home;
+      let awayTeam = data[i].teams.visitors;
+      let homeScore = data[i].scores.home;
+      let awayScore = data[i].scores.visitors;
+
+      gameObj.game_id = gameId;
+      gameObj.status = result;
+      gameObj.start_time = startTime;
+      gameObj.home_team = homeTeam;
+      gameObj.away_team = awayTeam;
+      gameObj.home_score = homeScore;
+      gameObj.away_score = awayScore;
+
+      console.log('GAMEOBJECT ' + gameObj)
+
+      Game.findOne({game_id: `${gameId}`})
+      .then(game => {
+        if(game === null) {
+          let newGame = new Game(gameObj);
+          console.log(newGame);
+          newGame.save();
+        }
+      })
+      .catch(err => console.log(err))
+    }
   })
   .catch(function (error) {
     console.log(error);

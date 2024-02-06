@@ -1,20 +1,29 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-var ObjectId = require('mongodb').ObjectID;
-
+// var ObjectId = require('mongodb').ObjectID;
 
 const GameSchema = new Schema({
+  game_id: {
+    type: Number
+  },
+  status: {
+    type: Object
+  },
   start_time: {
-    type: Date,
-    required: true 
+    type: Date
   },
   home_team: {
-    type: String,
-    required: true 
+    type: Object
   },
   away_team: {
-    type: String,
-    required: true
+    type: Object,
+    // required: true
+  },
+  home_score: {
+    type: Object
+  },
+  away_score: {
+    type: Object
   },
   // home_odds: {
   //   type: Number, 
@@ -24,29 +33,6 @@ const GameSchema = new Schema({
   //   type: Number,
   //   required: true
   // },
-  status: {
-    type: String,
-    required: true
-  },
-  game_start_time: {
-    type: String,
-    required: true
-  },
-  game_minute: {
-    type: String
-  },
-  quarter: {
-    type: String,
-    required: true
-  },
-  home_score: {
-    type: Number,
-    required: true
-  },
-  away_score: {
-    type: Number, 
-    required: true 
-  }
 }) 
 
 const Game = mongoose.model("games", GameSchema)
