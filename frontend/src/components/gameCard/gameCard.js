@@ -64,15 +64,20 @@ class GameCard extends React.Component {
         console.log(game)
 
         let status = ""
-        if(game.status.long === "Finished"){
+        if (game.status.long === "Finished"){
             status = "Final"
-        } else {
+        } else if (game.status.long === "In Play") {
             status = "Live"
         }
-        console.log(game.start_time)
-        console.log(new Date(game.start_time))
+        
+        let homeScore = game.home_score.points;
+        let awayScore = game.away_score.points;
+        if (homeScore === null && awayScore === null) {
+            homeScore = 0;
+            awayScore= 0;
+        }
+
         let gameTime = this.convertGMTtoPST(new Date(game.start_time));
-        console.log(gameTime)
 
 
         return (
@@ -105,13 +110,13 @@ class GameCard extends React.Component {
                                     </div>
                                     <div className="game-period">{game.status.clock}</div>
                                     <div className="game-score">
-                                        <span className="game-score-number game-score-number--leading" >{game.away_score.points}</span>
+                                        <span className="game-score-number game-score-number--leading" >{awayScore}</span>
                                         <span className="game-score-divider">:</span>
-                                        <span className="game-score-number">{game.home_score.points}</span>
+                                        <span className="game-score-number">{homeScore}</span>
                                     </div>
                                     {/* <div className={(game.away_score > 0 || game.home_score > 0 ? "game-status": "game-status-hidden")}>Live</div>  */}
-                                    <div className={(game.status != "Finished" && (game.away_score > 0 || game.home_score > 0) ? "game-status": "game-status-hidden")}>{status}</div> 
-                                    {/* <div className={(game.status === "Final") ? "game-status-final": "game-status-final-hidden"}>Final</div>  */}
+                                    <div className={(game.status.long != "Finished" && (awayScore !=  null || homeScore != null) ? "game-status-hidden" : "game-status")}>{status}</div> 
+                                    <div className={(status === "Final") ? "game-status-final": "game-status-final-hidden"}>Final</div> 
                                     {/* <div className="game-bet">
                                         {betLocked}
                                     </div> */}
