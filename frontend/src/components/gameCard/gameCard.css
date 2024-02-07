@@ -40,30 +40,26 @@ strong {
     font-family: 'Lucida Sans', Arial, sans-serif;
     line-height: 1.5;
     color: var(--color-text-primary);
-    /* background-color: var(--color-bg-secondary); */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 100px;
-    /* background-color: #242424; */
+    width: 500px;
     border-radius: 15px;
-    /* background: #F4F6F9; */
+    padding: 100px;
 }
 
 .game {
     background-color: #F4F6F9;
     display: flex;
     flex-direction: column;
-    min-width: 750px;
+    min-width: 500px;
+    /* min-height: 300px; */
     border-radius: 10px;
     box-shadow: 0 0 1px 0 #303030, 0 3px 3px 0 #303030
 }
 
 .game-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 16px 0px 16px;
+    justify-content: center;
+    background-color: #F4F6F9;
+    padding: 8px 0px 8px 0px;
     /* border-bottom: 2px solid#303030; */
 }
 
@@ -102,8 +98,6 @@ strong {
 
 .nba-game-logo img {
     width: 20px;
-    margin-right: 12px;
-    margin-left: 57px;
 }
 
 .game-content {
@@ -127,12 +121,11 @@ strong {
 }
 
 .team-logo {
-    width: 100px;
+    width: 75px;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
 }
 
 .game-team-name {
@@ -262,6 +255,11 @@ strong {
 
 .outer-grid {
     /* background-color: #242424; */
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    /* width: 100%; */
 }
 
 .game-status-final {

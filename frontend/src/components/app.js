@@ -10,7 +10,7 @@ import HomeContainer from './home/home_container';
 // import ProfileContainer from './profile/profile_container';
 // import ShowGameContainer from './games/show_game_container';
 
-// import './reset.css'
+import './reset.css'
 // import './splash/splash.css'
 // import './nav/navbar.css'
 import './session/login_form.css';
@@ -22,7 +22,7 @@ import '../components/gameCard/gameCard.css';
 // import './games/show_game.css'
 // import './comments/comments.css'
 // import './toast/toast.css'
-// import './home/home.css'
+import './home/home.css'
 // import './scroll_bar/scroll_bar.css'
 
 // import './games/games_list.css'

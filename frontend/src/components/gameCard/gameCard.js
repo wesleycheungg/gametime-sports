@@ -17,6 +17,7 @@ class GameCard extends React.Component {
         }
 
         this.handleClose = this.handleClose.bind(this);
+        this.convertGMTtoPST = this.convertGMTtoPST.bind(this);
     }
 
     handleClose(e){
@@ -25,6 +26,17 @@ class GameCard extends React.Component {
         // this.props.clearBetErrors();
     }
 
+    convertGMTtoPST(gmtTime) {
+        const date = new Date(gmtTime);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        let hours = date.getHours();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12; // Convert to 12-hour format
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+
+        return `${month}/${day} ${hours}:${minutes} ${ampm}`;
+    }
 
     render() {
         let game = this.props.game;
@@ -57,16 +69,19 @@ class GameCard extends React.Component {
         } else {
             status = "Live"
         }
+        console.log(game.start_time)
+        console.log(new Date(game.start_time))
+        let gameTime = this.convertGMTtoPST(new Date(game.start_time));
+        console.log(gameTime)
+
 
         return (
                 <div className="game-card-container">
                     <div className="game">
-
                         <div className="game-header">
                             {/* <button className="game-alert-bt" onClick={() => this.setState({helpModalOpen: true})}>Help</button> */}
                             <div className="nba-game-logo">
-                                <img src={nba_logo} className="img-nba"></img>
-                                National Basketball League
+                                <img src={nba_logo} className="img-nba"/>
                             </div>
                             {/* <Link to={`/game/show/${game._id}`}><button className="game-log-btn">View Game Log</button></Link> */}
                         </div>
@@ -74,11 +89,11 @@ class GameCard extends React.Component {
                         <div className="game-content">
                             <div className="column">
                                 <div className="team team--away">
-                                    <div className="team-logo">
-                                        {game.away_team.logo}
+                                    <div>
+                                        <img src={game.away_team.logo} className="team-logo"/>
                                     </div>
                                     <p className="team-away-home">AWAY</p>
-                                    <h2 className="game-team-name">{game.away_team.name}</h2>
+                                    <h2 className="game-team-name">{game.away_team.code}</h2>
                                     {/* <button className="game-bet-odds">{a_odds}</button> */}
                                 </div>
                             </div>
@@ -86,7 +101,7 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="game-details">
                                     <div className="game-period">
-                                        <strong>{game.start_time}</strong>
+                                        <strong>{gameTime}</strong>
                                     </div>
                                     <div className="game-period">{game.status.clock}</div>
                                     <div className="game-score">
@@ -110,10 +125,10 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="team team--home">
                                     <div className="team-logo">
-                                    {game.home_team.logo}
+                                        <img src={game.home_team.logo} className="team-logo"/>
                                     </div>
                                     <p className="team-away-home">HOME</p>
-                                    <h2 className="game-team-name">{game.home_team.name}</h2>
+                                    <h2 className="game-team-name">{game.home_team.code}</h2>
                                     {/* <button className="game-bet-odds">{h_odds}</button> */}
                                 </div>
                             </div>
