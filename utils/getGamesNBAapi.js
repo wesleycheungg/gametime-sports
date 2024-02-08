@@ -65,6 +65,11 @@ const getGameResultsFromNBAapi = () => {
           let newGame = new Game(gameObj);
           console.log(newGame);
           newGame.save();
+        } else if (!!game) {
+          game.status = result;
+          game.home_score = homeScore;
+          game.away_score = awayScore;
+          game.quarter = quarter;
         }
       })
       .catch(err => console.log(err))

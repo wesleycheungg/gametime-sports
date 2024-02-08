@@ -16,7 +16,8 @@ const games = require("./routes/api/games");
 const User = require("./models/User");
 
 // NBA games API
-const getGameResultsFromNBAapi = require("./utils/getGamesNBAapi")
+const tasks = require("./bin/cron-scheduler");
+const getGameResultsFromNBAapi = require("./utils/getGamesNBAapi");
 
 
 if (process.env.NODE_ENV === "production") {
@@ -50,3 +51,4 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {console.log(`listening on port ${port}`)});
 
 // getGameResultsFromNBAapi();
+// tasks();
