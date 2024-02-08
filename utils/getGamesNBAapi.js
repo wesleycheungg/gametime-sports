@@ -66,10 +66,13 @@ const getGameResultsFromNBAapi = () => {
           console.log(newGame);
           newGame.save();
         } else if (!!game) {
+          console.log('IM IN THE ELSE IF STATEMENT')
           game.status = result;
           game.home_score = homeScore;
           game.away_score = awayScore;
           game.quarter = quarter;
+
+          console.log(game + ' GAME OBJECT AFTER LIVE UPDATE')
         }
       })
       .catch(err => console.log(err))
