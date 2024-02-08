@@ -97,7 +97,7 @@ class GameCard extends React.Component {
                         <div className="game-header">
                             {/* <button className="game-alert-bt" onClick={() => this.setState({helpModalOpen: true})}>Help</button> */}
                             <div className="nba-game-logo">
-                                <img src={nba_logo} className="img-nba"/>
+                                <img src={nba_logo} className="img-nba" alt="nba-logo-img"/>
                             </div>
                             {/* <Link to={`/game/show/${game._id}`}><button className="game-log-btn">View Game Log</button></Link> */}
                         </div>
@@ -106,7 +106,7 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="team team--away">
                                     <div>
-                                        <img src={awayLogo} className="team-logo"/>
+                                        <img src={awayLogo} className="team-logo" alt="away-logo"/>
                                     </div>
                                     <p className="team-away-home">AWAY</p>
                                     <h2 className="game-team-name">{awayCode}</h2>
@@ -123,7 +123,7 @@ class GameCard extends React.Component {
                                         <span className="game-score-divider">:</span>
                                         <span className="game-score-number">{homeScore}</span>
                                     </div>
-                                    <div className={(awayScore != 0 || homeScore != 0 ? "game-status": "game-status-hidden")}>Live</div>
+                                    <div className={(awayScore !== 0 || homeScore !== 0 ? "game-status": "game-status-hidden")}>Live</div>
                                     {/* <div className={(game.status.long != "Finished" && (awayScore !=  null || homeScore != null) ? "game-status-hidden" : "game-status")}>{status}</div>  */}
                                     <div className={(status === "Final") ? "game-status-final": "game-status-final-hidden"}>Final</div> 
                                     {/* <div className="game-bet">
@@ -139,7 +139,7 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="team team--home">
                                     <div className="team-logo">
-                                        <img src={homeLogo} className="team-logo"/>
+                                        <img src={homeLogo} className="team-logo" alt="home-logo"/>
                                     </div>
                                     <p className="team-away-home">HOME</p>
                                     <h2 className="game-team-name">{homeCode}</h2>

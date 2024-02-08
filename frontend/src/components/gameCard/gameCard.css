@@ -42,14 +42,15 @@ strong {
     color: var(--color-text-primary);
     width: 500px;
     border-radius: 15px;
-    padding: 50px;
+    padding: 30px;
 }
 
 .game {
-    background-color: #F4F6F9;
+    background-color: white;
     display: flex;
     flex-direction: column;
     min-width: 500px;
+    min-height: 250px;
     border-radius: 10px;
     box-shadow: 0 0 1px 0 #303030, 0 3px 3px 0 #303030
 }
@@ -57,8 +58,10 @@ strong {
 .game-header {
     display: flex;
     justify-content: center;
-    background-color: #F4F6F9;
+    /* background-color: #F4F6F9; */
+    background-color: #1c2a38;
     padding: 8px 0px 8px 0px;
+    border-radius: 5px 5px 0px 0px;
 }
 
 .game-status-hidden {
@@ -104,12 +107,12 @@ strong {
 }
 
 .column {
-    padding: 15px 25px 25px 25px;
+    padding: 25px 25px 25px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: calc(100%/3); */
-    width: 200px;
+    width: calc(100%/3);
+    /* width: 200px; */
 }
 
 .team {
