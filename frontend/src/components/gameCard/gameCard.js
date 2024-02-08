@@ -77,8 +77,19 @@ class GameCard extends React.Component {
             awayScore= 0;
         }
 
+        let homeLogo = game.home_team.logo;
+        let awayLogo = game.away_team.logo;
+
+        let homeCode = game.home_team.code;
+        let awayCode = game.away_team.code;
+
         let gameTime = this.convertGMTtoPST(new Date(game.start_time));
 
+        console.log(status)
+        let gameStartTime = (status === "Live") ?
+            null : <div className="game-period">
+                <strong>{gameTime}</strong>
+            </div>;
 
         return (
                 <div className="game-card-container">
@@ -95,27 +106,25 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="team team--away">
                                     <div>
-                                        <img src={game.away_team.logo} className="team-logo"/>
+                                        <img src={awayLogo} className="team-logo"/>
                                     </div>
                                     <p className="team-away-home">AWAY</p>
-                                    <h2 className="game-team-name">{game.away_team.code}</h2>
+                                    <h2 className="game-team-name">{awayCode}</h2>
                                     {/* <button className="game-bet-odds">{a_odds}</button> */}
                                 </div>
                             </div>
 
                             <div className="column">
                                 <div className="game-details">
-                                    <div className="game-period">
-                                        <strong>{gameTime}</strong>
-                                    </div>
+                                    {gameStartTime}
                                     <div className="game-period">{game.status.clock}</div>
                                     <div className="game-score">
                                         <span className="game-score-number game-score-number--leading" >{awayScore}</span>
                                         <span className="game-score-divider">:</span>
                                         <span className="game-score-number">{homeScore}</span>
                                     </div>
-                                    {/* <div className={(game.away_score > 0 || game.home_score > 0 ? "game-status": "game-status-hidden")}>Live</div>  */}
-                                    <div className={(game.status.long != "Finished" && (awayScore !=  null || homeScore != null) ? "game-status-hidden" : "game-status")}>{status}</div> 
+                                    <div className={(awayScore != 0 || homeScore != 0 ? "game-status": "game-status-hidden")}>Live</div>
+                                    {/* <div className={(game.status.long != "Finished" && (awayScore !=  null || homeScore != null) ? "game-status-hidden" : "game-status")}>{status}</div>  */}
                                     <div className={(status === "Final") ? "game-status-final": "game-status-final-hidden"}>Final</div> 
                                     {/* <div className="game-bet">
                                         {betLocked}
@@ -130,10 +139,10 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="team team--home">
                                     <div className="team-logo">
-                                        <img src={game.home_team.logo} className="team-logo"/>
+                                        <img src={homeLogo} className="team-logo"/>
                                     </div>
                                     <p className="team-away-home">HOME</p>
-                                    <h2 className="game-team-name">{game.home_team.code}</h2>
+                                    <h2 className="game-team-name">{homeCode}</h2>
                                     {/* <button className="game-bet-odds">{h_odds}</button> */}
                                 </div>
                             </div>
