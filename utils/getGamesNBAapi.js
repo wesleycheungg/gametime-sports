@@ -57,6 +57,8 @@ const getGameResultsFromNBAapi = () => {
       gameObj.arena = arena;
       gameObj.quarter = quarter;
 
+      console.log(gameObj)
+
       console.log('GAMEOBJECT ' + gameObj)
 
       Game.findOne({game_id: `${gameId}`})
@@ -66,13 +68,12 @@ const getGameResultsFromNBAapi = () => {
           console.log(newGame);
           newGame.save();
         } else if (!!game) {
-          console.log('IM IN THE ELSE IF STATEMENT')
           game.status = result;
           game.home_score = homeScore;
           game.away_score = awayScore;
           game.quarter = quarter;
-
-          console.log(game + ' GAME OBJECT AFTER LIVE UPDATE')
+          
+          game.save()
         }
       })
       .catch(err => console.log(err))

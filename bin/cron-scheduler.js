@@ -14,6 +14,7 @@ const tasks = () => {
 
     cron.schedule('*/30 16-23 * * * *', () => {
       getGameResultsFromNBAapi();
+      console.log('JUST RAN NBA API')
     });
 }
 

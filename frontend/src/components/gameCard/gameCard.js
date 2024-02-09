@@ -63,7 +63,7 @@ class GameCard extends React.Component {
 
         console.log(game)
 
-        let status = ""
+        let status = game.status.long;
         if (game.status.long === "Finished"){
             status = "Final"
         } else if (game.status.long === "In Play") {
