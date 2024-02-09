@@ -91,6 +91,11 @@ class GameCard extends React.Component {
                 <strong>{gameTime}</strong>
             </div>;
 
+        let currentGameQuarter;
+        if (game.quarter.current > 0) {
+            currentGameQuarter = 'Q' + game.quarter.current + ' ';
+        }
+
         return (
                 <div className="game-card-container">
                     <div className="game">
@@ -117,7 +122,7 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="game-details">
                                     {gameStartTime}
-                                    <div className="game-period">{'Q'+ game.quarter.current + ' '}{game.status.clock}</div>
+                                    <div className="game-period">{currentGameQuarter}{game.status.clock}</div>
                                     <div className="game-score">
                                         <span className="game-score-number game-score-number--leading" >{awayScore}</span>
                                         <span className="game-score-divider">:</span>

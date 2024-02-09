@@ -11,10 +11,11 @@ mongoose
 
 
 const tasks = () => {
+    const currentTime = new Date();
 
-    cron.schedule('*/30 16-23 * * * *', () => {
+    cron.schedule('*/1 16-23 * * *', () => {
       getGameResultsFromNBAapi();
-      console.log('JUST RAN NBA API')
+      console.log('JUST RAN NBA API ' + currentTime)
     });
 }
 
