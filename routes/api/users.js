@@ -82,7 +82,7 @@ router.post('/login', (req, res) => {
             id: user.id, //mongo db object id
             handle: user.handle,
             email: user.email,
-            currency: user.currency,
+            currency: user.currency
           }
 
           jwt.sign(
