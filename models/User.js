@@ -17,7 +17,11 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    currency: {
+        type: Number,
+        required: true 
+  },
 });
 
 const User = mongoose.model('users', UserSchema);
