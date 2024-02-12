@@ -32,7 +32,7 @@ const getGameResultsFromNBAapi = () => {
   .then(function (response) {
     let data = response.data.response
 
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       let gameObj = {};
 
       let result = data[i].status;
@@ -43,6 +43,8 @@ const getGameResultsFromNBAapi = () => {
       let awayTeam = data[i].teams.visitors;
       let homeScore = data[i].scores.home;
       let awayScore = data[i].scores.visitors;
+      let homeName = homeTeam.name;
+      let awayName = awayTeam.name;
       let quarter = data[i].periods;
       let arena = data[i].arena;
 
@@ -54,6 +56,8 @@ const getGameResultsFromNBAapi = () => {
       gameObj.away_team = awayTeam;
       gameObj.home_score = homeScore;
       gameObj.away_score = awayScore;
+      gameObj.home_name = homeName;
+      gameObj.away_name = awayName;
       gameObj.arena = arena;
       gameObj.quarter = quarter;
 

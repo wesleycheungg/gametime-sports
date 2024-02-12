@@ -27,20 +27,21 @@ const GameSchema = new Schema({
   away_score: {
     type: Object
   },
+  home_name: {
+    type: String
+  },
+  away_name: {
+    type: String
+  },
   quarter: {
     type: Object
   },
   arena: {
     type: Object
+  },
+  odds: {
+    type: Object
   }
-  // home_odds: {
-  //   type: Number, 
-  //   required: true 
-  // },
-  // away_odds: {
-  //   type: Number,
-  //   required: true
-  // },
 }) 
 
 const Game = mongoose.model("games", GameSchema)
