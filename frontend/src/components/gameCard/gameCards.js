@@ -15,7 +15,6 @@ class GameCards extends React.Component {
 
     render () {
         const games = this.props.games
-        console.log(games)
         const sortedGames = games.sort(function(a, b) {
             let keyA = new Date(a.start_time)
             let keyB = new Date(b.start_time);
@@ -24,11 +23,10 @@ class GameCards extends React.Component {
             if (keyA > keyB) return 1;
             return 0;
             });
-        // console.log(sortedGames)
 
         return (
             <div className="outer-grid">
-                { games.map(game => {
+                { sortedGames.map(game => {
                   if (game.home_score === -1){
                     return null
                   } else {

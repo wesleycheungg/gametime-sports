@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import nba_logo from '../../images/nba-logo.png';
 
-// import BetModalContainer from '../bet_modal/bet_modal_container';
+import BetModalContainer from '../bets/bet_modal_container';
 // import TutorialContainer from '../tutorial/tutorial_container';
 
 
@@ -74,9 +74,6 @@ class GameCard extends React.Component {
         let home_spread_odds = game.odds === undefined ? null : odds.markets[1].outcomes[1].price;
         let away_spread_odds = game.odds === undefined ? null : odds.markets[1].outcomes[0].price;
 
-        console.log(home_spread_odds + ' home odds')
-        console.log(away_spread_odds + ' away odds')
-
         let gameTime = this.convertGMTtoPST(new Date(game.start_time));
 
         let gameStartTime = (status === "Live") ?
@@ -146,8 +143,8 @@ class GameCard extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {/* <TutorialContainer onClose={() => this.setState({helpModalOpen: false})} modalOpen={this.state.helpModalOpen} home_team={game.home_team} away_team={game.away_team} home_odds={h_odds} away_odds={a_odds}/>
-                    <BetModalContainer onClose={this.handleClose} modalOpen={this.state.modalOpen} h_team={game.home_team} a_team={game.away_team} h_odds={h_odds} a_odds={a_odds} game_id={game._id}/> */}
+                    {/* <TutorialContainer onClose={() => this.setState({helpModalOpen: false})} modalOpen={this.state.helpModalOpen} home_team={game.home_team} away_team={game.away_team} home_odds={h_odds} away_odds={a_odds}/> */}
+                    <BetModalContainer onClose={this.handleClose} modalOpen={this.state.modalOpen} h_team={homeCode} a_team={awayCode} h_odds={home_spread_odds} a_odds={away_spread_odds} game_id={game._id}/>
                 </div>
         )
     }

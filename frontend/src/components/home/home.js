@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import NavBarContainer from '../navbar/navbar_container';
 import GameCardsContainer from '../gameCard/gameCards_container';
-// import BetModalContainer from '../bet_modal/bet_modal_container';
 // import ScrollBarContainer from '../scroll_bar/scroll_bar_container';
 // import Toast from '../toast/toast';
 // import checkIcon from '../../images/check.svg'
@@ -12,11 +11,6 @@ import GameCardsContainer from '../gameCard/gameCards_container';
 class Home extends React.Component {
   constructor(props) {
       super(props);
-
-      this.state = {
-        // modalOpen: false,
-      }
-
   }
 
   render() {
@@ -34,7 +28,6 @@ class Home extends React.Component {
         <div className="all-games">
           <h1 className="home-header">Today's Games</h1>
           <div className="home-header-date">{today}</div>
-          {/* <button onClick={() => this.setState({modalOpen: true})} className="make-bet">Make Bet</button> */}
           <GameCardsContainer />
           {/* <div className="footer-container">
             <div class="dropup">
@@ -57,7 +50,6 @@ class Home extends React.Component {
             Copyright &copy; 2024 GameTime Sports
           </footer> */}
         </div>
-        {/* <BetModalContainer onClose={() => this.setState({modalOpen: false})} modalOpen={this.state.modalOpen} /> */}
       </div>
     );
   }

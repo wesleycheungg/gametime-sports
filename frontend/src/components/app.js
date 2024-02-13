@@ -11,18 +11,18 @@ import HomeContainer from './home/home_container';
 // import ShowGameContainer from './games/show_game_container';
 
 import './reset.css'
-// import './splash/splash.css'
-// import './nav/navbar.css'
+import './home/home.css'
 import './session/login_form.css';
 import './session/signup_form.css';
 import '../components/gameCard/gameCard.css';
-// import './bet_modal/bet_modal.css'
+import './bets/bet_modal.css'
+// import './splash/splash.css'
+// import './nav/navbar.css'
 // import './profile/profile.css'
 // import './games/game_index_item.css'
 // import './games/show_game.css'
 // import './comments/comments.css'
 // import './toast/toast.css'
-import './home/home.css'
 // import './scroll_bar/scroll_bar.css'
 
 // import './games/games_list.css'
