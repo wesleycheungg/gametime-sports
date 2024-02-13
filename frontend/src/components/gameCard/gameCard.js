@@ -22,7 +22,7 @@ class GameCard extends React.Component {
 
     handleClose(e){
         e.preventDefault();
-        // this.setState({modalOpen: false});
+        this.setState({modalOpen: false});
         // this.props.clearBetErrors();
     }
 
@@ -41,12 +41,12 @@ class GameCard extends React.Component {
     render() {
         let game = this.props.game;
 
-        // let betLocked
-        // if (game.away_score > 0 || game.home_score > 0){
-        //     betLocked = <button className="game-bet-btn-locked">Bets Locked!</button>
-        // } else {
-        //     betLocked = <button className="game-bet-btn" onClick={() => this.setState({modalOpen: true})}>Place Bet</button>
-        // }
+        let betLocked
+        if (game.away_score > 0 || game.home_score > 0){
+            betLocked = <button className="game-bet-btn-locked">Bets Locked!</button>
+        } else {
+            betLocked = <button className="game-bet-btn" onClick={() => this.setState({modalOpen: true})}>Place Bet</button>
+        }
 
         console.log(game)
 
@@ -124,9 +124,9 @@ class GameCard extends React.Component {
                                     <div className={(awayScore !== 0 || homeScore !== 0 ? "game-status": "game-status-hidden")}>Live</div>
                                     {/* <div className={(game.status.long != "Finished" && (awayScore !=  null || homeScore != null) ? "game-status-hidden" : "game-status")}>{status}</div>  */}
                                     <div className={(status === "Final") ? "game-status-final": "game-status-final-hidden"}>Final</div> 
-                                    {/* <div className="game-bet">
+                                    <div className="game-bet">
                                         {betLocked}
-                                    </div> */}
+                                    </div>
                                     <div>
                                         
                                     </div>
