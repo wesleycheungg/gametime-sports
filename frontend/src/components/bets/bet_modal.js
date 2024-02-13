@@ -64,7 +64,7 @@ class BetModal extends React.Component {
                 }
             });
         })
-        
+        this.props.onSubmit();
     }
 
     renderErrors() {
@@ -78,8 +78,6 @@ class BetModal extends React.Component {
     }
 
     render () {
-        // console.log(this.props.a_team)
-        // console.log(this.props.h_team)
         // const testList = [
         //         {
         //         id: 1,
@@ -121,8 +119,7 @@ class BetModal extends React.Component {
                             <input className="amount" type="number" onChange={this.handleAmount("amount")} value={this.state.amount}/>
                             <label className="bet-team-name" htmlFor="amount">Bet Amount</label>
                         </div>
-                        {/* <div className={(this.props.errors === null ? "errors": "errors-hidden")}> */}
-                        <div>
+                        <div className="errors">
                                 {this.renderErrors()}
                         </div>
                         <div className="modal-footer">

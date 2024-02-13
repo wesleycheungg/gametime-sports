@@ -173,6 +173,7 @@ input:focus {
     flex-grow: 1;
     color: red;
     padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .errors-hidden {

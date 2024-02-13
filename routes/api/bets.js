@@ -80,8 +80,8 @@ router.post('/create', (req, res) => {
     User.findById(userId)
         .then((user) => {
             if (user) {
-                if (req.body.amount <= 1) {
-                    return res.status(422).json({"msg": "User must bet at least 1 unit of currency"})
+                if (req.body.amount <= 10) {
+                    return res.status(422).json({"msg": "User must bet at least 10 unit of currency"})
                 }
                 if (user.currency - req.body.amount >= 0){
                     let bet = {}

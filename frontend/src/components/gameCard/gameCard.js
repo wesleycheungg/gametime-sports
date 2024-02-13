@@ -17,13 +17,14 @@ class GameCard extends React.Component {
         }
 
         this.handleClose = this.handleClose.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.convertGMTtoPST = this.convertGMTtoPST.bind(this);
     }
 
     handleClose(e){
         e.preventDefault();
         this.setState({modalOpen: false});
-        // this.props.clearBetErrors();
+        this.props.clearBetErrors();
     }
 
     convertGMTtoPST(gmtTime) {
@@ -36,6 +37,10 @@ class GameCard extends React.Component {
         const minutes = String(date.getMinutes()).padStart(2, '0');
 
         return `${month}/${day} ${hours}:${minutes} ${ampm}`;
+    }
+
+    handleSubmit() {
+        this.setState({ modalOpen: false });
     }
 
     render() {
@@ -144,7 +149,7 @@ class GameCard extends React.Component {
                         </div>
                     </div>
                     {/* <TutorialContainer onClose={() => this.setState({helpModalOpen: false})} modalOpen={this.state.helpModalOpen} home_team={game.home_team} away_team={game.away_team} home_odds={h_odds} away_odds={a_odds}/> */}
-                    <BetModalContainer onClose={this.handleClose} modalOpen={this.state.modalOpen} h_team={homeCode} a_team={awayCode} h_odds={home_spread_odds} a_odds={away_spread_odds} game_id={game._id} h_logo={homeLogo} a_logo={awayLogo}/>
+                    <BetModalContainer onClose={this.handleClose} onSubmit={this.handleSubmit} modalOpen={this.state.modalOpen} h_team={homeCode} a_team={awayCode} h_odds={home_spread_odds} a_odds={away_spread_odds} game_id={game._id} h_logo={homeLogo} a_logo={awayLogo}/>
                 </div>
         )
     }

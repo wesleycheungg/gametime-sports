@@ -31,7 +31,7 @@ class GameCards extends React.Component {
                     return null
                   } else {
                     // return <GameCard clearBetErrors={this.props.clearBetErrors} game={game} key={game._id} />
-                    return <GameCard game={game} key={game._id} />
+                    return <GameCard game={game} clearBetErrors={this.props.clearBetErrors} key={game._id} />
                   }
                 })}
             </div>
