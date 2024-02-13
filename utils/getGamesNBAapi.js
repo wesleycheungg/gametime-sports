@@ -68,6 +68,7 @@ const getGameResultsFromNBAapi = () => {
       gameObj.away_name = awayName;
       gameObj.arena = arena;
       gameObj.quarter = quarter;
+      gameObj.odds = {};
 
       Game.findOne({game_id: `${gameId}`})
       .then(game => {

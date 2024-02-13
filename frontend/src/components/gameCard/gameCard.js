@@ -71,8 +71,8 @@ class GameCard extends React.Component {
         let awayCode = game.away_team.code;
 
         let odds = game.odds;
-        let home_spread_odds = odds.markets[1].outcomes[1].price
-        let away_spread_odds = odds.markets[1].outcomes[0].price
+        let home_spread_odds = game.odds === undefined ? null : odds.markets[1].outcomes[1].price;
+        let away_spread_odds = game.odds === undefined ? null : odds.markets[1].outcomes[0].price;
 
         console.log(home_spread_odds + ' home odds')
         console.log(away_spread_odds + ' away odds')
