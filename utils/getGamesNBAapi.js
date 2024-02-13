@@ -43,10 +43,18 @@ const getGameResultsFromNBAapi = () => {
       let awayTeam = data[i].teams.visitors;
       let homeScore = data[i].scores.home;
       let awayScore = data[i].scores.visitors;
-      let homeName = homeTeam.name;
-      let awayName = awayTeam.name;
       let quarter = data[i].periods;
       let arena = data[i].arena;
+
+      let homeName = homeTeam.name;
+      let awayName = awayTeam.name;
+      //LA Clippers are the only known team to have a diffrent name
+      //across APIs 
+      if (homeName === "LA Clippers"){
+        homeName = "Los Angeles Clippers"
+      } else if (awayName === "LA Clippers"){
+        awayName = "Los Angeles Clippers"
+      }
 
       gameObj.game_id = gameId;
       gameObj.status = result;

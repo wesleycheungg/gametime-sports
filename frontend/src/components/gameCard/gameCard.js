@@ -41,19 +41,6 @@ class GameCard extends React.Component {
     render() {
         let game = this.props.game;
 
-        // let h_odds;
-        // let a_odds;
-        // if(game.home_odds > 0){
-        //     h_odds = "+" + game.home_odds ;
-        // } else {
-        //     h_odds = game.home_odds;
-        // }
-        // if(game.away_odds > 0){
-        //     a_odds = "+" + game.away_odds;
-        // } else {
-        //     a_odds = game.away_odds;
-        // }
-
         // let betLocked
         // if (game.away_score > 0 || game.home_score > 0){
         //     betLocked = <button className="game-bet-btn-locked">Bets Locked!</button>
@@ -83,9 +70,15 @@ class GameCard extends React.Component {
         let homeCode = game.home_team.code;
         let awayCode = game.away_team.code;
 
+        let odds = game.odds;
+        let home_spread_odds = odds.markets[1].outcomes[1].price
+        let away_spread_odds = odds.markets[1].outcomes[0].price
+
+        console.log(home_spread_odds + ' home odds')
+        console.log(away_spread_odds + ' away odds')
+
         let gameTime = this.convertGMTtoPST(new Date(game.start_time));
 
-        console.log(status)
         let gameStartTime = (status === "Live") ?
             null : <div className="game-period">
                 <strong>{gameTime}</strong>
@@ -115,7 +108,7 @@ class GameCard extends React.Component {
                                     </div>
                                     <p className="team-away-home">AWAY</p>
                                     <h2 className="game-team-name">{awayCode}</h2>
-                                    {/* <button className="game-bet-odds">{a_odds}</button> */}
+                                    <button className="game-bet-odds">{away_spread_odds}</button>
                                 </div>
                             </div>
 
@@ -148,7 +141,7 @@ class GameCard extends React.Component {
                                     </div>
                                     <p className="team-away-home">HOME</p>
                                     <h2 className="game-team-name">{homeCode}</h2>
-                                    {/* <button className="game-bet-odds">{h_odds}</button> */}
+                                    <button className="game-bet-odds">{home_spread_odds}</button>
                                 </div>
                             </div>
                         </div>

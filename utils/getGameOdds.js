@@ -40,7 +40,6 @@ const getGameOdds = () => {
 
       Game.findOne({$and: [{home_name: `${odds_obj.home_team}`},{away_name: `${odds_obj.away_team}`}]})
       .then(game => {
-          console.log(game + 'BEFORE IF STATEMENT')
           if (game !== null) {
             game.odds = odds_obj.odds
             game.save()
