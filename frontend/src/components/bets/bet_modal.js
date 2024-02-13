@@ -109,17 +109,20 @@ class BetModal extends React.Component {
                         </div>
                         <div className="modal-body">
                             <div className="modal-row">
+                                <img src={this.props.h_logo} className="modal-team-logo" alt="away-logo"/>
                                 <input id="home-team" onChange={this.handleInput("selection")} type="radio" name="label" required="required" value="true"/>
                                 <label className="bet-team-name" htmlFor="home-team">{this.props.h_team} {this.printOdds(this.props.h_odds)}</label>
                             </div>
                             <div className="modal-row">
+                                <img src={this.props.a_logo} className="modal-team-logo" alt="away-logo"/>
                                 <input id="away-team" onChange={this.handleInput("selection")} type="radio" required="required" name="label" value="false"/>
                                 <label className="bet-team-name" htmlFor="away-team">{this.props.a_team} {this.printOdds(this.props.a_odds)}</label>
                             </div>
                             <input className="amount" type="number" onChange={this.handleAmount("amount")} value={this.state.amount}/>
                             <label className="bet-team-name" htmlFor="amount">Bet Amount</label>
                         </div>
-                        <div className={(this.props.errors.length > 0 ? "errors": "errors-hidden")}>
+                        {/* <div className={(this.props.errors === null ? "errors": "errors-hidden")}> */}
+                        <div>
                                 {this.renderErrors()}
                         </div>
                         <div className="modal-footer">

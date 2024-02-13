@@ -48,7 +48,7 @@ class GameCard extends React.Component {
             betLocked = <button className="game-bet-btn" onClick={() => this.setState({modalOpen: true})}>Place Bet</button>
         }
 
-        console.log(game)
+        // console.log(game)
 
         let status = game.status.long;
         if (game.status.long === "Finished"){
@@ -144,7 +144,7 @@ class GameCard extends React.Component {
                         </div>
                     </div>
                     {/* <TutorialContainer onClose={() => this.setState({helpModalOpen: false})} modalOpen={this.state.helpModalOpen} home_team={game.home_team} away_team={game.away_team} home_odds={h_odds} away_odds={a_odds}/> */}
-                    <BetModalContainer onClose={this.handleClose} modalOpen={this.state.modalOpen} h_team={homeCode} a_team={awayCode} h_odds={home_spread_odds} a_odds={away_spread_odds} game_id={game._id}/>
+                    <BetModalContainer onClose={this.handleClose} modalOpen={this.state.modalOpen} h_team={homeCode} a_team={awayCode} h_odds={home_spread_odds} a_odds={away_spread_odds} game_id={game._id} h_logo={homeLogo} a_logo={awayLogo}/>
                 </div>
         )
     }

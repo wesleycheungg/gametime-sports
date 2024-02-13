@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 var ObjectId = require('mongodb').ObjectID;
 
 const BetSchema = new Schema({
-  game: {
-    type: ObjectId, 
-    required: true 
-  },
-  user: {
-    type: ObjectId, 
-    required: true 
-  },
+//   game: {
+//     type: ObjectId, 
+//     required: true
+//   },
+//   user: {
+//     type: ObjectId, 
+//     required: true 
+//   },
   selection: {
     type: String,
     required: true 

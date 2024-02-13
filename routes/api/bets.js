@@ -44,7 +44,7 @@ router.delete('/:betId', (req, res) => {
                 user.currency += bet.amount
 
                 //Updating ledger 
-                user.history.push({x: new Date(Date.now()), y: user.currency})
+                // user.history.push({x: new Date(Date.now()), y: user.currency})
 
                 user.save()
                 return res.json({user, bet})
@@ -65,88 +65,92 @@ router.delete('/:betId', (req, res) => {
 })
 
 
+const util = require('util');
+
 router.post('/create', (req, res) => {
-  if (typeof req.body.userId === 'undefined' ){
-    return res.status(404).json({"msg":"userId is undefined"})
-  }
-  User.findById(req.body.userId, (err, user) => {
-
-    if (req.body.amount <= 1){
-      return res.status(422).json({"msg": "User must bet at least 1 unit of currency"})
+    if (typeof req.body.userId === 'undefined' ){
+        return res.status(404).json({"msg":"userId is undefined"})
     }
 
-    if (user.currency - req.body.amount >= 0){
-      let bet = {}
-      bet.user = user;
+    // console.log(util.inspect(req.body, { depth: null }) + ' REQUEST')
+    let userId = req.body.userId;
+    let gameId = req.body.game;
+    let betAmount = req.body.amount
 
-      
+    User.findById(userId)
+        .then((user) => {
+            if (user) {
+                if (req.body.amount <= 1) {
+                    return res.status(422).json({"msg": "User must bet at least 1 unit of currency"})
+                }
+                if (user.currency - req.body.amount >= 0){
+                    let bet = {}
+                    bet.user = user;
 
-      Game.findById(req.body.game, (err, game) => {
-        if (game.status === 'Final' || game.status === 'In Progress'){
-          return res.status(422).json({"msg": `game ${game.status}`})
-        }
+                    Game.findById(gameId)
+                        .then((game) => {
+                            if(game.status.long === 'Finished' || game.status === "In Play") {
+                                return res.status(422).json({"msg": `game ${game.status}`})
+                            }
 
-        bet.game = req.body.game; 
-        bet.status = 'Incomplete'
-        bet.amount = parseInt(req.body.amount);
+                            bet.game = gameId;
+                            bet.status = 'Incomplete';
+                            bet.amount = parseInt(betAmount);
 
-        //set bet.date equal to today 
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-      
-      
-        
-        bet.date = yyyy + '-' + mm + '-' + dd;
-      
+                            //set bet.date equal to today 
+                            var today = new Date();
+                            var dd = String(today.getDate()).padStart(2, '0');
+                            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                            var yyyy = today.getFullYear();
 
-        // set status 
-        if (req.body.selection === "true"){
-          selection = true;
-        } else {
-          selection = false; 
-        }
+                            bet.date = yyyy + '-' + mm + '-' + dd;
 
-        //caculate payout
-        if (selection){
-          bet.selection = game.home_team
-          if (game.home_odds > 0){
-            bet.payout = (game.home_odds/100) * bet.amount + bet.amount
-          } else {
-            bet.payout = (100/game.home_odds) * bet.amount * -1 + bet.amount
-          }
-        } else {
-          bet.selection = game.away_team 
-          if (game.away_odds > 0){
-            bet.payout = (game.away_odds/100) * bet.amount + bet.amount
-          } else {
-            bet.payout = (100/game.away_odds) * bet.amount * -1 + bet.amount
-          }
-        }
-        bet.payout = Math.floor(bet.payout)
+                            // set bet status 
+                            if (req.body.selection === "true"){
+                                selection = true;
+                            } else {
+                                selection = false; 
+                            }
 
-        // deduct amount
-        user.currency -= bet.amount
+                            console.log(game + 'BET SLIP')
 
-        //update ledger 
-        user.history.push({x: new Date(Date.now()), y: user.currency})
-        
-        user.save()
+                            let home_spread_odds = game.odds === undefined ? null : game.odds.markets[1].outcomes[1].price;
+                            let away_spread_odds = game.odds === undefined ? null : game.odds.markets[1].outcomes[0].price;
+                            //caculate payout
+                            if (selection){
+                                bet.selection = game.home_team.name
+                                if (home_spread_odds > 0){
+                                    bet.payout = (home_spread_odds/100) * bet.amount + bet.amount
+                                } else {
+                                    bet.payout = (100/home_spread_odds) * bet.amount * -1 + bet.amount
+                                }
+                                } else {
+                                    bet.selection = game.away_team.name
+                                if (away_spread_odds > 0){
+                                    bet.payout = (away_spread_odds/100) * bet.amount + bet.amount
+                                } else {
+                                    bet.payout = (100/away_spread_odds) * bet.amount * -1 + bet.amount
+                                }
+                            }
 
-        //respond with the the made bet and the updated user 
-        let newBet = new Bet(bet)
-        newBet.save()
-        return res.json({bet: newBet, user: user,  "msg": "Bet was succesfully saved!"})
-        
-      })
-    } else {
-      //If it's not, respond with an error + message
-      // return res.status(422).json({msg:`${user.handle} bet ${req.body.amount - user.currency} too much`})
-    return res.status(422).json({"msg": "Not enough funds." })
-    }
-  })
+                            bet.payout = Math.floor(bet.payout);
+
+                            // deduct amount
+                            user.currency -= bet.amount;
+
+                            user.save();
+
+                            let newBet = new Bet(bet);
+                            newBet.save();
+                            return res.json({bet: newBet, user: user,  "msg": "Bet was succesfully saved!"})
+
+                        })
+                } else {
+                    //If it's not, respond with an error + message
+                    return res.status(422).json({"msg": "Not enough funds." })
+                }
+            }
+        }).catch((error) => { console.error(error); })
 })
-
 
 module.exports = router; 

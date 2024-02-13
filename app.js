@@ -11,6 +11,7 @@ const db = require("./config/keys").mongoURI;
 // routes/api
 const users = require("./routes/api/users");
 const games = require("./routes/api/games");
+const bets = require("./routes/api/bets");
 
 // models
 const User = require("./models/User");
@@ -41,6 +42,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", users)
 app.use("/api/games", games)
+app.use("/api/bets", bets)
 
 app.get("/", (req, res) => res.send("Hello World!!"));
 
