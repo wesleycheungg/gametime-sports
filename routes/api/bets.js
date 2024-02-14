@@ -44,7 +44,7 @@ router.delete('/:betId', (req, res) => {
                 user.currency += bet.amount
 
                 //Updating ledger 
-                // user.history.push({x: new Date(Date.now()), y: user.currency})
+                user.history.push({x: new Date(Date.now()), y: user.currency})
 
                 user.save()
                 return res.json({user, bet})
@@ -137,6 +137,9 @@ router.post('/create', (req, res) => {
 
                             // deduct amount
                             user.currency -= bet.amount;
+
+                            //update ledger 
+                            user.history.push({x: new Date(Date.now()), y: user.currency})
 
                             user.save();
 

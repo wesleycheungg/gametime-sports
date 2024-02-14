@@ -21,7 +21,10 @@ const UserSchema = new Schema({
     currency: {
         type: Number,
         required: true 
-  },
+    },
+    history: []
+    }, {
+    timestamps: true
 });
 
 const User = mongoose.model('users', UserSchema);

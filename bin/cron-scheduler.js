@@ -14,7 +14,7 @@ mongoose
 const tasks = () => {
     const currentTime = new Date();
 
-    cron.schedule('*/5 * * * *', () => {
+    cron.schedule('*/10 * * * *', () => {
       getGameResultsFromNBAapi();
       console.log('JUST RAN NBA API ' + currentTime)
     });
