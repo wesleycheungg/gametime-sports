@@ -45,14 +45,7 @@ class GameCard extends React.Component {
 
     render() {
         let game = this.props.game;
-
-        let betLocked
-        if (game.away_score > 0 || game.home_score > 0){
-            betLocked = <button className="game-bet-btn-locked">Bets Locked!</button>
-        } else {
-            betLocked = <button className="game-bet-btn" onClick={() => this.setState({modalOpen: true})}>Place Bet</button>
-        }
-
+        
         // console.log(game)
 
         let status = game.status.long;
@@ -67,6 +60,13 @@ class GameCard extends React.Component {
         if (homeScore === null && awayScore === null) {
             homeScore = 0;
             awayScore= 0;
+        }
+
+        let betLocked
+        if (awayScore > 0 || homeScore > 0){
+            betLocked = <button className="game-bet-btn-locked">Bets Locked!</button>
+        } else {
+            betLocked = <button className="game-bet-btn" onClick={() => this.setState({modalOpen: true})}>Place Bet</button>
         }
 
         let homeLogo = game.home_team.logo;
@@ -88,7 +88,7 @@ class GameCard extends React.Component {
 
         let currentGameQuarter;
         if (game.quarter.current > 0) {
-            currentGameQuarter = 'Q' + game.quarter.current + ' ';
+            currentGameQuarter = 'Q' + game.quarter.current + ' ' + game.status.clock;
         }
 
         return (
@@ -117,13 +117,13 @@ class GameCard extends React.Component {
                             <div className="column">
                                 <div className="game-details">
                                     {gameStartTime}
-                                    <div className="game-period">{currentGameQuarter}{game.status.clock}</div>
+                                    <div className="game-period">{status === "Live" ? currentGameQuarter : null}</div>
                                     <div className="game-score">
                                         <span className="game-score-number game-score-number--leading" >{awayScore}</span>
                                         <span className="game-score-divider">:</span>
                                         <span className="game-score-number">{homeScore}</span>
                                     </div>
-                                    <div className={(awayScore !== 0 || homeScore !== 0 ? "game-status": "game-status-hidden")}>Live</div>
+                                    <div className={(status === "Live" ? "game-status": "game-status-hidden")}>Live</div>
                                     {/* <div className={(game.status.long != "Finished" && (awayScore !=  null || homeScore != null) ? "game-status-hidden" : "game-status")}>{status}</div>  */}
                                     <div className={(status === "Final") ? "game-status-final": "game-status-final-hidden"}>Final</div> 
                                     <div className="game-bet">

@@ -94,7 +94,6 @@ class BetModal extends React.Component {
         // }
 
         if (this.props.modalOpen) {
-            // console.log(this.props.errors)
             console.log(this.props)
             return (
                 <div className="modal-container">
